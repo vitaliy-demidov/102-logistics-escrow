@@ -1,0 +1,13 @@
+@import "tailwindcss";
+
+@theme {
+  --color-surface: #1e1e1e;
+  --color-primary: #10b981;
+  --font-display: "Inter", sans-serif;
+}
+
+@layer base {
+  body {
+    @apply bg-black text-white antialiased overflow-hidden select-none touch-none;
+  }
+}
