@@ -63,15 +63,16 @@
         { id: 'finance', icon: DollarSign, label: 'Finance' },
         { id: 'timeline', icon: Clock, label: 'Events' },
       ] as tab}
+        {@const TabIcon = tab.icon}
         <button 
-          onclick={() => setTab(tab.id)}
+          onclick={() => setTab(tab.id as 'main' | 'map' | 'finance' | 'timeline')}
           class="flex-1 flex items-center justify-center gap-1.5 py-2.5 rounded-xl text-xs font-bold transition-all"
           class:bg-emerald-500={appState.activeTab === tab.id}
           class:text-black={appState.activeTab === tab.id}
           class:bg-zinc-900={appState.activeTab !== tab.id}
           class:text-zinc-500={appState.activeTab !== tab.id}
         >
-          <svelte:component this={tab.icon} size={14} />
+          <TabIcon size={14} />
           {tab.label}
         </button>
       {/each}
@@ -192,7 +193,7 @@
 
     {:else if appState.lots.length > 0}
       <!-- Tinder Cards -->
-      {#let lot = appState.lots[0]}
+      {@const lot = appState.lots[0]}
         <div class="w-full max-w-sm mx-auto aspect-[3/4] bg-zinc-900 rounded-3xl border border-zinc-800 shadow-2xl relative overflow-hidden flex flex-col mt-4">
           <div class="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/80 to-transparent"></div>
           <div class="relative z-10 p-6 flex-1 flex flex-col justify-end">
@@ -222,7 +223,6 @@
             </div>
           </div>
         </div>
-      {/let}
     {:else}
       <div class="text-center space-y-4 m-auto pt-20">
         <div class="w-16 h-16 rounded-full bg-zinc-900 flex items-center justify-center mx-auto border border-zinc-800">
