@@ -1,12 +1,13 @@
 <script lang="ts">
   import { generateDynamicQR, type SignedQRPayload } from '../crypto';
-  import { t, submitPOD } from '../store.svelte';
+  import { getT, submitPOD } from '../store.svelte';
   import { X, ScanLine, AlertTriangle, RefreshCw, MapPin, Camera, CheckCircle2 } from 'lucide-svelte';
   import WebApp from '@twa-dev/sdk';
 
   let { lotId, amountUsd, onClose } = $props<{ lotId: string, amountUsd: number, onClose: () => void }>();
 
   let step = $state<'gps' | 'photo' | 'qr'>('gps');
+  let t = $derived(getT());
 
   // GPS State
   let gpsFixed = $state(false);

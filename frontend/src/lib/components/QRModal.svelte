@@ -1,10 +1,11 @@
 <script lang="ts">
   import { generateDynamicQR, type SignedQRPayload } from '../crypto';
-  import { t } from '../store.svelte';
+  import { getT } from '../store.svelte';
   import { X, ScanLine, AlertTriangle, RefreshCw } from 'lucide-svelte';
 
   let { lotId, amountUsd, onClose } = $props<{ lotId: string, amountUsd: number, onClose: () => void }>();
 
+  let t = $derived(getT());
   let qrData = $state<SignedQRPayload | null>(null);
   let timeLeft = $state(180);
   let timerInterval: any;

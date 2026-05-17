@@ -159,7 +159,9 @@ export const appState = $state({
   activeTab: 'main' as 'main' | 'map' | 'finance' | 'timeline',
 });
 
-export const t = $derived(translations[appState.lang] || translations.ru);
+export function getT() {
+  return translations[appState.lang] || translations.ru;
+}
 
 export function initApp() {
   if (typeof WebApp !== 'undefined') {

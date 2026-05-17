@@ -1,6 +1,6 @@
 <script lang="ts">
   import { onMount } from 'svelte';
-  import { appState, initApp, swipeLot, t, ShipmentState, ActionOwner, openDispute, startLiveTracking, setTab } from '../lib/store.svelte';
+  import { appState, initApp, swipeLot, getT, ShipmentState, ActionOwner, openDispute, startLiveTracking, setTab } from '../lib/store.svelte';
   import DeliveryProofModal from '../lib/components/DeliveryProofModal.svelte';
   import EscrowCard from '../lib/components/EscrowCard.svelte';
   import LiveMap from '../lib/components/LiveMap.svelte';
@@ -10,6 +10,7 @@
   import { MapPin, ArrowRight, ShieldCheck, Truck, CheckCircle2, AlertTriangle, AlertCircle, Map, DollarSign, Clock, Bell, Navigation } from 'lucide-svelte';
 
   let showDeliveryProof = $state(false);
+  let t = $derived(getT());
 
   onMount(() => {
     initApp();
